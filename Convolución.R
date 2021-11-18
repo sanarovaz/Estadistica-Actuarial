@@ -1,6 +1,6 @@
 library(dplyr)
 
-convolucion <- function(df1, df2){
+convolucion <- function(df1, df2, porder = FALSE){
   L1 = length(df1[,1])
   L2 = length(df2[,1])
   c1 = c()
@@ -12,11 +12,9 @@ convolucion <- function(df1, df2){
       c2 <- append(c2, df1[i,2] * df2[j,2])
     }
   }
-  
   dfc <- data.frame(c1, c2)
-  dfc <- aggregate(c2 ~ c1, dfc, sum)
   
-  dfc  
+  return(aggregate(c2 ~ c1, dfc, sum))
 }
 
 df1 <- data.frame(c(0,50,100,150),
@@ -27,3 +25,4 @@ df3 <- data.frame(c(0, 200),
                   c(0.75, 0.25))
 
 c <- convolucion(convolucion(df1, df2), df3)
+c
