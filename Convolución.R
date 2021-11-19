@@ -1,6 +1,6 @@
 library(dplyr)
 
-convolucion <- function(df1, df2, porder = FALSE){
+conv <- function(df1, df2){
   L1 = length(df1[,1])
   L2 = length(df2[,1])
   c1 = c()
@@ -24,5 +24,5 @@ df2 <- data.frame(c(0,20,50,80, 100),
 df3 <- data.frame(c(0, 200),
                   c(0.75, 0.25))
 
-c <- convolucion(convolucion(df1, df2), df3)
+c <- conv(conv(df1, df2), df3)
 c
